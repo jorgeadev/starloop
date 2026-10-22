@@ -1,0 +1,86 @@
+name: Run request
+description: Request permission and setup guidance to run Starloop yourself.
+title: "[Run request]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a request for permission and guidance, not an authorization.
+        The owner will review it and reply in this issue.
+
+        **Do not include passwords, GitHub tokens, database URLs, or other secrets.**
+        Read the [LICENSE](../../blob/main/LICENSE) and the policy-risk disclosure before submitting.
+
+  - type: input
+    id: github-handle
+    attributes:
+      label: GitHub handle
+      placeholder: "@your-handle"
+    validations:
+      required: true
+
+  - type: input
+    id: contact
+    attributes:
+      label: Preferred contact
+      description: A public issue is visible. Do not put private contact details here unless you are comfortable with that.
+
+  - type: dropdown
+    id: intended-use
+    attributes:
+      label: Intended use
+      options:
+        - Local evaluation
+        - Portfolio / code review
+        - Private deployment
+        - Research / education
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope requested
+      options:
+        - Local only
+        - Private deployment
+        - Permission to reuse code
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Hosting environment
+      description: For example, local machine, Vercel, or another Node host. Leave blank for local review.
+
+  - type: textarea
+    id: request
+    attributes:
+      label: What do you need?
+      description: Describe the setup help, permission, or architecture questions you need answered.
+      placeholder: "I want to run the app locally to evaluate the architecture..."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      options:
+        - label: I have read the LICENSE and understand that prior written permission is required to run, deploy, or reuse the project.
+          required: true
+        - label: I understand that reciprocal starring may conflict with GitHub policy and I will not automate stars.
+          required: true
+        - label: I will not use multiple accounts to coordinate reciprocal starring.
+          required: true
+        - label: I will review legal, privacy, and platform requirements before any deployment.
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        The owner may decline a request, ask for more information, or provide guidance only.
+        Do not deploy a copy until you have written permission.

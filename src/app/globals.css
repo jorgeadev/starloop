@@ -1,0 +1,366 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+	--color-canvas: var(--canvas);
+	--color-sidebar: var(--sidebar);
+	--color-panel: var(--panel);
+	--color-panel-raised: var(--panel-raised);
+	--color-panel-muted: var(--panel-muted);
+	--color-ink: var(--ink);
+	--color-secondary: var(--ink-secondary);
+	--color-muted: var(--ink-muted);
+	--color-line: var(--line);
+	--color-line-subtle: var(--line-subtle);
+	--color-line-strong: var(--line-strong);
+	--color-star: var(--star);
+	--color-star-soft: var(--star-soft);
+	--color-mint: var(--mint);
+	--color-mint-soft: var(--mint-soft);
+	--color-rose: var(--rose);
+	--color-rose-soft: var(--rose-soft);
+	--color-sky: var(--sky);
+	--color-sky-soft: var(--sky-soft);
+	--font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+	--font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+	--radius-panel: 14px;
+	--radius-control: 9px;
+	--radius-pill: 9999px;
+	--shadow-resting: 0 1px 2px oklch(0% 0 0 / 0.16);
+	--shadow-floating: 0 18px 44px oklch(0% 0 0 / 0.38), 0 2px 8px oklch(0% 0 0 / 0.2);
+}
+
+:root {
+	color-scheme: dark;
+	--canvas: oklch(17.6% 0.004 264);
+	--sidebar: oklch(15.4% 0.004 264);
+	--panel: oklch(20.1% 0.005 264);
+	--panel-raised: oklch(23.2% 0.006 264);
+	--panel-muted: oklch(25.2% 0.006 264);
+	--ink: oklch(96.2% 0.003 264);
+	--ink-secondary: oklch(77% 0.006 264);
+	--ink-muted: oklch(62.5% 0.007 264);
+	--line: oklch(28.5% 0.006 264);
+	--line-subtle: oklch(24.5% 0.005 264);
+	--line-strong: oklch(39% 0.008 264);
+	--star: oklch(85% 0.145 85);
+	--star-soft: oklch(85% 0.145 85 / 0.13);
+	--mint: oklch(79% 0.125 165);
+	--mint-soft: oklch(79% 0.125 165 / 0.12);
+	--rose: oklch(72% 0.16 20);
+	--rose-soft: oklch(72% 0.16 20 / 0.12);
+	--sky: oklch(77% 0.09 235);
+	--sky-soft: oklch(77% 0.09 235 / 0.12);
+}
+
+@layer base {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	html {
+		background: var(--canvas);
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		margin: 0;
+		background:
+			radial-gradient(1100px 520px at 76% -12%, oklch(30% 0.03 85 / 0.16), transparent 62%),
+			radial-gradient(900px 500px at 4% 0%, oklch(24% 0.025 250 / 0.2), transparent 60%),
+			var(--canvas);
+		color: var(--ink);
+		font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		font-synthesis: none;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		min-height: 100dvh;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	p {
+		margin: 0;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-weight: 500;
+		letter-spacing: -0.025em;
+		text-wrap: balance;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	button,
+	input,
+	textarea,
+	select {
+		font: inherit;
+	}
+
+	button {
+		cursor: pointer;
+	}
+
+	button:disabled {
+		cursor: not-allowed;
+	}
+
+	::selection {
+		background: var(--star-soft);
+		color: var(--ink);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--star);
+		outline-offset: 2px;
+	}
+
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: oklch(32% 0.006 264);
+		border: 3px solid var(--canvas);
+		border-radius: 9999px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: oklch(38% 0.006 264);
+	}
+
+	dialog::backdrop {
+		background: oklch(8% 0 0 / 0.66);
+		backdrop-filter: blur(6px);
+	}
+}
+
+@layer utilities {
+	.micro {
+		font-size: 0.625rem;
+		line-height: 1.25;
+		letter-spacing: 0.13em;
+		text-transform: uppercase;
+		font-weight: 500;
+	}
+
+	.numeric {
+		font-variant-numeric: tabular-nums;
+		letter-spacing: -0.02em;
+	}
+
+	.surface-grid {
+		background-image:
+			linear-gradient(to right, oklch(100% 0 0 / 0.035) 1px, transparent 1px),
+			linear-gradient(to bottom, oklch(100% 0 0 / 0.035) 1px, transparent 1px);
+		background-size: 42px 42px;
+		mask-image: radial-gradient(ellipse at 50% 0%, black 8%, transparent 72%);
+	}
+
+	.star-glow {
+		box-shadow:
+			0 0 0 1px oklch(85% 0.145 85 / 0.22),
+			0 14px 40px oklch(85% 0.145 85 / 0.08);
+	}
+
+	.animate-rise {
+		animation: rise 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+	}
+
+	.animate-fade {
+		animation: fade 400ms ease-out both;
+	}
+
+	.shimmer {
+		background: linear-gradient(
+			100deg,
+			oklch(25% 0.006 264) 20%,
+			oklch(29% 0.007 264) 40%,
+			oklch(25% 0.006 264) 60%
+		);
+		background-size: 220% 100%;
+		animation: shimmer 1.6s linear infinite;
+	}
+}
+
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes shimmer {
+	from {
+		background-position: 180% 0;
+	}
+	to {
+		background-position: -60% 0;
+	}
+}
+
+@keyframes pulse-ring {
+	0% {
+		box-shadow: 0 0 0 0 oklch(79% 0.125 165 / 0.4);
+	}
+	70% {
+		box-shadow: 0 0 0 6px oklch(79% 0.125 165 / 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 oklch(79% 0.125 165 / 0);
+	}
+}
+
+.pulse-dot {
+	animation: pulse-ring 2.4s ease-out infinite;
+}
+
+/* Long-form legal and policy pages. */
+.legal-prose {
+	color: var(--ink-secondary);
+	font-size: 0.875rem;
+	line-height: 1.75;
+}
+
+.legal-prose > * + * {
+	margin-top: 1rem;
+}
+
+.legal-prose h2 {
+	margin-top: 2.25rem;
+	margin-bottom: 0.5rem;
+	color: var(--ink);
+	font-size: 1.05rem;
+	font-weight: 500;
+	letter-spacing: -0.02em;
+}
+
+.legal-prose h3 {
+	margin-top: 1.5rem;
+	color: var(--ink);
+	font-size: 0.925rem;
+	font-weight: 500;
+}
+
+.legal-prose ul,
+.legal-prose ol {
+	padding-left: 1.15rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.legal-prose li::marker {
+	color: var(--ink-muted);
+}
+
+.legal-prose strong {
+	color: var(--ink);
+	font-weight: 500;
+}
+
+.legal-prose a {
+	color: var(--ink);
+	text-decoration: underline;
+	text-decoration-color: var(--line-strong);
+	text-underline-offset: 3px;
+}
+
+.legal-prose a:hover {
+	text-decoration-color: var(--star);
+}
+
+.legal-prose code {
+	font-family: var(--font-geist-mono), ui-monospace, monospace;
+	font-size: 0.8em;
+	color: var(--ink);
+	background: var(--panel-raised);
+	border: 1px solid var(--line);
+	border-radius: 4px;
+	padding: 0.1rem 0.3rem;
+}
+
+.legal-prose table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.8rem;
+}
+
+.legal-prose th,
+.legal-prose td {
+	text-align: left;
+	padding: 0.55rem 0.65rem;
+	border-bottom: 1px solid var(--line);
+	vertical-align: top;
+}
+
+.legal-prose th {
+	color: var(--ink-muted);
+	font-weight: 500;
+}
+
+/* Sonner close control, matched to the app's restrained dark chrome. */
+[data-sonner-toast] [data-close-button] {
+	position: absolute !important;
+	top: 8px !important;
+	right: 8px !important;
+	left: auto !important;
+	transform: none !important;
+	background: var(--panel-muted) !important;
+	border: 1px solid var(--line) !important;
+	color: var(--ink-muted) !important;
+	transition:
+		background-color 150ms ease,
+		border-color 150ms ease,
+		color 150ms ease;
+}
+
+[data-sonner-toast] [data-close-button]:hover {
+	background: var(--rose-soft) !important;
+	border-color: color-mix(in oklch, var(--rose) 35%, transparent) !important;
+	color: var(--rose) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
