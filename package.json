@@ -34,7 +34,7 @@
 		"drizzle-orm": "0.45.4",
 		"geist": "1.8.2",
 		"lucide-react": "1.61.0",
-		"next": "16.4.2",
+		"next": "16.4.5",
 		"postgres": "^3.4.9",
 		"react": "19.3.1",
 		"react-dom": "19.3.1",
